@@ -123,6 +123,8 @@ You can replace <code class="docutils literal notranslate"><span class="pre">she
 <p>This sections lists models trained using <a class="reference external" href="https://github.com/k2-fsa/icefall">icefall</a>.</p>
 <section id="english">
 <h3>English<a class="headerlink" href="#english" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-gigaspeech-conformer-ctc">
+<h4>icefall-asr-gigaspeech-conformer-ctc<a class="headerlink" href="#icefall-asr-gigaspeech-conformer-ctc" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This model is trained using GigaSpeech</span>
 <span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/wgb14/icefall-asr-gigaspeech-conformer-ctc
 <span class="nb">cd</span> icefall-asr-gigaspeech-conformer-ctc
@@ -155,6 +157,9 @@ sherpa-offline <span class="se">\</span>
   ./test_wavs/1221-135766-0002.wav
 </pre></div>
 </div>
+</section>
+<section id="icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09">
+<h4>icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09<a class="headerlink" href="#icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
 <span class="nb">cd</span> icefall-asr-librispeech-conformer-ctc-jit-bpe-500-2021-11-09
 
@@ -195,8 +200,11 @@ sherpa-offline <span class="se">\</span>
 </pre></div>
 </div>
 </section>
+</section>
 <section id="chinese">
 <h3>Chinese<a class="headerlink" href="#chinese" title="Permalink to this headline"></a></h3>
+<section id="icefall-asr-aishell-conformer-ctc">
+<h4>icefall_asr_aishell_conformer_ctc<a class="headerlink" href="#icefall-asr-aishell-conformer-ctc" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/pkufool/icefall_asr_aishell_conformer_ctc
 <span class="nb">cd</span> icefall_asr_aishell_conformer_ctc
 git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
@@ -222,11 +230,14 @@ sherpa-offline <span class="se">\</span>
 </div>
 </section>
 </section>
+</section>
 <section id="wenet">
 <h2>wenet<a class="headerlink" href="#wenet" title="Permalink to this headline"></a></h2>
 <p>This section lists models from <a class="reference external" href="https://github.com/k2-fsa/sherpa">wenet</a>.</p>
 <section id="id1">
 <h3>English<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<section id="wenet-english-model">
+<h4>wenet-english-model<a class="headerlink" href="#wenet-english-model" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wenet-english-model
 <span class="nb">cd</span> wenet-english-model
 git lfs pull --include <span class="s2">&quot;final.zip&quot;</span>
@@ -243,8 +254,11 @@ sherpa-offline <span class="se">\</span>
 </pre></div>
 </div>
 </section>
+</section>
 <section id="id2">
 <h3>Chinese<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<section id="wenet-chinese-model">
+<h4>wenet-chinese-model<a class="headerlink" href="#wenet-chinese-model" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wenet-chinese-model
 <span class="nb">cd</span> wenet-chinese-model
 git lfs pull --include <span class="s2">&quot;final.zip&quot;</span>
@@ -262,6 +276,7 @@ sherpa-offline <span class="se">\</span>
   ./test_wavs/DEV_T0000000002.wav
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 <section id="torchaudio">
@@ -289,6 +304,8 @@ sherpa-offline <span class="se">\</span>
 </section>
 <section id="german">
 <h3>German<a class="headerlink" href="#german" title="Permalink to this headline"></a></h3>
+<section id="voxpopuli-asr-base">
+<h4>voxpopuli_asr_base<a class="headerlink" href="#voxpopuli-asr-base" title="Permalink to this headline"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span> git clone https://huggingface.co/csukuangfj/wav2vec2.0-torchaudio
 <span class="nb">cd</span> wav2vec2.0-torchaudio
 git lfs pull --include <span class="s2">&quot;voxpopuli_asr_base_10k_de.pt&quot;</span>
@@ -301,6 +318,7 @@ sherpa-offline <span class="se">\</span>
  ./test_wavs/20170517-0900-PLENARY-16-de_20170517.wav
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 </section>
