@@ -72,10 +72,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="offline_transducer.html">Offline transducer models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="online_transducer.html">Online transducer models</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../offline_asr/index.html">Non-streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../online_asr/index.html">Streaming ASR</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul>
@@ -138,7 +137,6 @@ You can replace <code class="docutils literal notranslate"><span class="pre">she
 <span class="nb">cd</span> icefall-asr-gigaspeech-conformer-ctc
 git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/words.txt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
 mkdir test_wavs
 <span class="nb">cd</span> test_wavs
@@ -159,7 +157,7 @@ sherpa-offline <span class="se">\</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
   ./test_wavs/1221-135766-0001.wav <span class="se">\</span>
   ./test_wavs/1221-135766-0002.wav
@@ -173,7 +171,6 @@ sherpa-offline <span class="se">\</span>
 
 git lfs pull --include <span class="s2">&quot;exp/cpu_jit.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/tokens.txt&quot;</span>
-git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/words.txt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG.pt&quot;</span>
 git lfs pull --include <span class="s2">&quot;data/lang_bpe_500/HLG_modified.pt&quot;</span>
 
@@ -189,7 +186,7 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with HLG</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG.pt <span class="se">\</span>
   --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
@@ -199,7 +196,7 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with HLG (modified)</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_bpe_500/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_bpe_500/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_bpe_500/HLG_modified.pt <span class="se">\</span>
   --use-gpu<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
   ./test_wavs/1089-134686-0001.wav <span class="se">\</span>
@@ -229,7 +226,7 @@ sherpa-offline <span class="se">\</span>
 <span class="c1"># Decode with an HLG graph</span>
 sherpa-offline <span class="se">\</span>
   --nn-model<span class="o">=</span>./exp/cpu_jit.pt <span class="se">\</span>
-  --tokens<span class="o">=</span>./data/lang_char/words.txt <span class="se">\</span>
+  --tokens<span class="o">=</span>./data/lang_char/tokens.txt <span class="se">\</span>
   --hlg<span class="o">=</span>./data/lang_char/HLG.pt <span class="se">\</span>
   ./test_waves/BAC009S0764W0121.wav <span class="se">\</span>
   ./test_waves/BAC009S0764W0122.wav <span class="se">\</span>
