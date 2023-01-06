@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; sherpa 1.0 documentation</title>
+  <title>Installation &mdash; sherpa 1.1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
@@ -31,7 +31,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.0
+                1.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../python/huggingface/index.html">Try sherpa with Huggingface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/installation/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/streaming_asr/index.html">Streaming ASR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming ASR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python/offline_asr/index.html">Non-streaming speech recognition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../python/faq.html">Frequently asked questions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For C++ users</span></p>
@@ -120,9 +120,9 @@ sherpa-related requirements into a single image. You need to install <a class="r
 </div>
 <section id="build-triton-image">
 <h2>Build Triton Image<a class="headerlink" href="#build-triton-image" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/k2-fsa/sherpa
-<span class="nb">cd</span> sherpa/triton
-docker build . -f Dockerfile/Dockerfile.server -t sherpa_triton_server:latest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa
+<span class="nb">cd</span><span class="w"> </span>sherpa/triton
+docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>Dockerfile/Dockerfile.server<span class="w"> </span>-t<span class="w"> </span>sherpa_triton_server:latest
 </pre></div>
 </div>
 <div class="admonition note">
@@ -132,7 +132,7 @@ docker build . -f Dockerfile/Dockerfile.server -t sherpa_triton_server:latest
 </section>
 <section id="launch-a-inference-container">
 <h2>Launch a inference container<a class="headerlink" href="#launch-a-inference-container" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --gpus all --name sherpa_server --net host --shm-size<span class="o">=</span>1g -it sherpa_triton_server:latest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>--name<span class="w"> </span>sherpa_server<span class="w"> </span>--net<span class="w"> </span>host<span class="w"> </span>--shm-size<span class="o">=</span>1g<span class="w"> </span>-it<span class="w"> </span>sherpa_triton_server:latest
 </pre></div>
 </div>
 <p>Now, you should enter into the container successfully.</p>
