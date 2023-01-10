@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Installation" href="../install/index.html" />
-    <link rel="prev" title="sherpa-ncnn" href="../index.html" /> 
+    <link rel="next" title="Endpointing" href="../endpoint.html" />
+    <link rel="prev" title="Embedded Linux (aarch64)" href="../install/aarch64-embedded-linux.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,6 +57,7 @@
 <p class="caption" role="heading"><span class="caption-text">ncnn</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">sherpa-ncnn</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#method-1">Method 1</a></li>
@@ -78,7 +79,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#recognize-a-file">Recognize a file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
 </ul>
@@ -124,6 +125,10 @@
              
   <section id="python-api">
 <span id="sherpa-ncnn-python-api"></span><h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>It works for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.6</span></code> on Linux, macOS, and Windows.</p>
+</div>
 <p>In this section, we describe</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -138,21 +143,30 @@ a microphone</p></li>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">1</span></code> of the  <code class="docutils literal notranslate"><span class="pre">4</span></code> methods below to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
 <section id="method-1">
 <h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
+</pre></div>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">1</span></code>, it will install pre-compiled libraries.
+The <code class="docutils literal notranslate"><span class="pre">disadvantage</span></code> is that it may <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">be</span> <span class="pre">optimized</span></code> for your platform,
+while the <code class="docutils literal notranslate"><span class="pre">advantage</span></code> is that you don’t need to install <code class="docutils literal notranslate"><span class="pre">cmake</span></code> or a
+C++ compiler.</p>
+<p>For the following methods, you have to first install:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">instal</span> <span class="pre">cmake</span></code></p></li>
+<li><p>A C++ compiler, e.g., GCC on Linux and macOS, Visual Studio on Windows</p></li>
+</ul>
+</section>
+<section id="method-2">
+<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
-<section id="method-2">
-<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/k2-fsa/sherpa-ncnn
-</pre></div>
-</div>
-</section>
 <section id="method-3">
 <h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/k2-fsa/sherpa-ncnn
 </pre></div>
 </div>
 </section>
@@ -249,7 +263,7 @@ code below.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Started! Please speak&quot;</span><span class="p">)</span>
     <span class="n">recognizer</span> <span class="o">=</span> <span class="n">create_recognizer</span><span class="p">()</span>
     <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span>
-    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 20ms</span>
+    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
     <span class="n">last_result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span><span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span> <span class="n">samplerate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -366,7 +380,7 @@ all models at present.</p></li>
 </section>
 <section id="read-audio-samples-from-the-microphone">
 <h3>4. Read audio samples from the microphone<a class="headerlink" href="#read-audio-samples-from-the-microphone" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 20ms</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
             <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
             <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -374,8 +388,8 @@ all models at present.</p></li>
 <p><strong>Note that</strong>:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>It reads <code class="docutils literal notranslate"><span class="pre">20</span> <span class="pre">ms</span></code> of audio samples at a time. You can choose a larger
-value, e.g., <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">ms</span></code>.</p></li>
+<li><p>It reads <code class="docutils literal notranslate"><span class="pre">100</span> <span class="pre">ms</span></code> of audio samples at a time. You can choose a larger
+value, e.g., <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">ms</span></code>.</p></li>
 <li><p>No queue or callback is used. Instead, we use a blocking read here.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">samples</span></code> array is reshaped to a <code class="docutils literal notranslate"><span class="pre">1-D</span></code> array</p></li>
 </ul>
@@ -428,6 +442,11 @@ and don’t print to the console if there is nothing new recognized.</p>
 <p class="admonition-title">Hint</p>
 <p>If you don’t have access to YouTube, please see the following video from bilibili:</p>
 <iframe src="//player.bilibili.com/player.html?bvid=BV1K44y197Fg&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="800" height="600"> </iframe></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py">https://github.com/k2-fsa/sherpa-ncnn/blob/master/python-api-examples/speech-recognition-from-microphone-with-endpoint-detection.py</a> supports endpoint detection.</p>
+<p>Please see the following video for its usage:</p>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1eK411y788&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="800" height="600"> </iframe></div>
 </section>
 </section>
 <section id="recognize-a-file">
@@ -528,8 +547,8 @@ and joiner.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="sherpa-ncnn" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../install/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../install/aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../endpoint.html" class="btn btn-neutral float-right" title="Endpointing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
