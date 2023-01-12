@@ -189,10 +189,21 @@ make<span class="w"> </span>-j6
 </pre></div>
 </div>
 <p>Let us check whether <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> was installed successfully:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__version__)&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__file__)&quot;</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import _sherpa_ncnn; print(_sherpa_ncnn.__file__)&quot;</span>
 </pre></div>
 </div>
+<p>They should print the location of <code class="docutils literal notranslate"><span class="pre">sherpa_ncnn</span></code> and <code class="docutils literal notranslate"><span class="pre">_sherpa_ncnn</span></code>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">Method</span> <span class="pre">3</span></code>, you can also use</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__version__)&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>It should print the version of <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>, e.g., <code class="docutils literal notranslate"><span class="pre">1.1</span></code>.</p>
+</div>
 <p>Next, we describe how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API for speech recognition:</p>
 <blockquote>
 <div><ul class="simple">
