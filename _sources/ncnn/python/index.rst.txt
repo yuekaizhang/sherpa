@@ -5,7 +5,7 @@ Python API
 
 .. hint::
 
-  It works for ``Python >= 3.6`` on Linux, macOS, and Windows.
+  It is known to work for ``Python >= 3.6`` on Linux, macOS, and Windows.
 
 In this section, we describe
 
@@ -22,9 +22,17 @@ You can use ``1`` of the  ``4`` methods below to install the Python package `she
 Method 1
 ^^^^^^^^
 
+.. hint::
+
+   This method works only on ``x86/x86_64`` systems: Linux, macOS and Windows.
+
+   For other architectures, e.g., Mac M1, Raspberry Pi, etc, please
+   use Method 2, 3, or 4.
+
 .. code-block:: bash
 
   pip install sherpa-ncnn
+
 
 If you use ``Method 1``, it will install pre-compiled libraries.
 The ``disadvantage`` is that it may ``not be optimized`` for your platform,
@@ -33,7 +41,7 @@ C++ compiler.
 
 For the following methods, you have to first install:
 
-- ``cmake``, which can be installed using ``pip instal cmake``
+- ``cmake``, which can be installed using ``pip install cmake``
 - A C++ compiler, e.g., GCC on Linux and macOS, Visual Studio on Windows
 
 Method 2
@@ -53,25 +61,70 @@ Method 3
   pip install git+https://github.com/k2-fsa/sherpa-ncnn
 
 
-Method 4 (For developers)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Method 4 (For developers and embedded boards)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. tabs::
 
-.. code-block:: bash
+   .. tab:: x86/x86_64
 
-  git clone https://github.com/k2-fsa/sherpa-ncnn
-  cd sherpa-ncnn
-  mkdir build
-  cd build
+      .. code-block:: bash
 
-  cmake \
-    -D SHERPA_NCNN_ENABLE_PYTHON=ON \
-    -D SHERPA_NCNN_ENABLE_PORTAUDIO=OFF \
-    -D BUILD_SHARED_LIBS=ON \
-    ..
+        git clone https://github.com/k2-fsa/sherpa-ncnn
+        cd sherpa-ncnn
+        mkdir build
+        cd build
 
-  make -j6
+        cmake \
+          -D SHERPA_NCNN_ENABLE_PYTHON=ON \
+          -D SHERPA_NCNN_ENABLE_PORTAUDIO=OFF \
+          -D BUILD_SHARED_LIBS=ON \
+          ..
 
-  export PYTHONPATH=$PWD/lib:$PWD/../sherpa-ncnn/python:$PYTHONPATH
+        make -j6
+
+        export PYTHONPATH=$PWD/lib:$PWD/../sherpa-ncnn/python:$PYTHONPATH
+
+   .. tab:: 32-bit ARM
+
+      .. code-block:: bash
+
+        git clone https://github.com/k2-fsa/sherpa-ncnn
+        cd sherpa-ncnn
+        mkdir build
+        cd build
+
+        cmake \
+          -D SHERPA_NCNN_ENABLE_PYTHON=ON \
+          -D SHERPA_NCNN_ENABLE_PORTAUDIO=OFF \
+          -D BUILD_SHARED_LIBS=ON \
+          -DCMAKE_C_FLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=neon" \
+          -DCMAKE_CXX_FLAGS="-march=armv7-a -mfloat-abi=hard -mfpu=neon" \
+          ..
+
+        make -j6
+
+        export PYTHONPATH=$PWD/lib:$PWD/../sherpa-ncnn/python:$PYTHONPATH
+
+   .. tab:: 64-bit ARM
+
+      .. code-block:: bash
+
+        git clone https://github.com/k2-fsa/sherpa-ncnn
+        cd sherpa-ncnn
+        mkdir build
+        cd build
+
+        cmake \
+          -D SHERPA_NCNN_ENABLE_PYTHON=ON \
+          -D SHERPA_NCNN_ENABLE_PORTAUDIO=OFF \
+          -D BUILD_SHARED_LIBS=ON \
+          -DCMAKE_C_FLAGS="-march=armv8-a" \
+          -DCMAKE_CXX_FLAGS="-march=armv8-a" \
+          ..
+
+        make -j6
+
+        export PYTHONPATH=$PWD/lib:$PWD/../sherpa-ncnn/python:$PYTHONPATH
 
 Let us check whether `sherpa-ncnn`_ was installed successfully:
 

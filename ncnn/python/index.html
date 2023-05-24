@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python API &mdash; sherpa 1.1 documentation</title>
+  <title>Python API &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -16,11 +17,12 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Endpointing" href="../endpoint.html" />
-    <link rel="prev" title="Embedded Linux (aarch64)" href="../install/aarch64-embedded-linux.html" /> 
+    <link rel="prev" title="Embedded Linux (riscv64)" href="../install/riscv64-embedded-linux.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,7 +33,7 @@
             <a href="../../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -63,7 +65,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#method-1">Method 1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#method-2">Method 2</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#method-3">Method 3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#method-4-for-developers">Method 4 (For developers)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-4-for-developers-and-embedded-boards">Method 4 (For developers and embedded boards)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#real-time-recognition-with-a-microphone">Real-time recognition with a microphone</a><ul>
@@ -81,7 +83,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq.html">FAQs</a></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +132,7 @@
 <span id="sherpa-ncnn-python-api"></span><h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>It works for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.6</span></code> on Linux, macOS, and Windows.</p>
+<p>It is known to work for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.6</span></code> on Linux, macOS, and Windows.</p>
 </div>
 <p>In this section, we describe</p>
 <blockquote>
@@ -143,6 +148,12 @@ a microphone</p></li>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">1</span></code> of the  <code class="docutils literal notranslate"><span class="pre">4</span></code> methods below to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
 <section id="method-1">
 <h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This method works only on <code class="docutils literal notranslate"><span class="pre">x86/x86_64</span></code> systems: Linux, macOS and Windows.</p>
+<p>For other architectures, e.g., Mac M1, Raspberry Pi, etc, please
+use Method 2, 3, or 4.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
 </pre></div>
 </div>
@@ -152,7 +163,7 @@ while the <code class="docutils literal notranslate"><span class="pre">advantage
 C++ compiler.</p>
 <p>For the following methods, you have to first install:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">instal</span> <span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code>, which can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cmake</span></code></p></li>
 <li><p>A C++ compiler, e.g., GCC on Linux and macOS, Visual Studio on Windows</p></li>
 </ul>
 </section>
@@ -170,9 +181,10 @@ python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
-<section id="method-4-for-developers">
-<h3>Method 4 (For developers)<a class="headerlink" href="#method-4-for-developers" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<section id="method-4-for-developers-and-embedded-boards">
+<h3>Method 4 (For developers and embedded boards)<a class="headerlink" href="#method-4-for-developers-and-embedded-boards" title="Permalink to this headline"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">x86/x86_64</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">32-bit ARM</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">64-bit ARM</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -188,6 +200,43 @@ make<span class="w"> </span>-j6
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PYTHON</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PORTAUDIO</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv7-a -mfloat-abi=hard -mfpu=neon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
+make<span class="w"> </span>-j6
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
+<span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PYTHON</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">SHERPA_NCNN_ENABLE_PORTAUDIO</span><span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-D<span class="w"> </span><span class="nv">BUILD_SHARED_LIBS</span><span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_C_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DCMAKE_CXX_FLAGS<span class="o">=</span><span class="s2">&quot;-march=armv8-a&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
+make<span class="w"> </span>-j6
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/lib:<span class="nv">$PWD</span>/../sherpa-ncnn/python:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+</div></div>
 <p>Let us check whether <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> was installed successfully:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_ncnn; print(sherpa_ncnn.__file__)&quot;</span>
 python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import _sherpa_ncnn; print(_sherpa_ncnn.__file__)&quot;</span>
@@ -558,7 +607,7 @@ and joiner.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../install/aarch64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (aarch64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../install/riscv64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (riscv64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../endpoint.html" class="btn btn-neutral float-right" title="Endpointing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

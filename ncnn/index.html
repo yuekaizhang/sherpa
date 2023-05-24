@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sherpa-ncnn &mdash; sherpa 1.1 documentation</title>
+  <title>sherpa-ncnn &mdash; sherpa 1.2 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -31,7 +32,7 @@
             <a href="../index.html" class="icon icon-home"> sherpa
           </a>
               <div class="version">
-                1.1
+                1.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -61,7 +62,10 @@
 <li class="toctree-l2"><a class="reference internal" href="python/index.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="android/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">FAQs</a></li>
 </ul>
 </li>
 </ul>
@@ -106,6 +110,11 @@
 <h1>sherpa-ncnn<a class="headerlink" href="#sherpa-ncnn" title="Permalink to this headline"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
+<p>During speech recognition, it does not need to access the Internet.
+Everyting is processed locally on your device.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p>A colab notebook is provided for you so that you can try <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>
 in the browser.</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1zdNAdWgV5rh1hLbLDqvLjxTa5tjU7cPa?usp=sharing"><img alt="sherpa-ncnn colab notebook" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
@@ -113,19 +122,21 @@ in the browser.</p>
 <p>We support using <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> to replace PyTorch for neural network computation.
 The code is put in a separate repository <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a></p>
 <p><a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> is self-contained and everything can be compiled from source.</p>
-<p>Please refer to <a class="reference external" href="https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models">https://k2-fsa.github.io/icefall/recipes/librispeech/lstm_pruned_stateless_transducer.html#export-models</a>
+<p>Please refer to <a class="reference external" href="https://k2-fsa.github.io/icefall/model-export/export-ncnn.html">https://k2-fsa.github.io/icefall/model-export/export-ncnn.html</a>
 for how to export models to <a class="reference external" href="https://github.com/tencent/ncnn">ncnn</a> format.</p>
 <p>In the following, we describe how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> for Linux, macOS,
-Windows, embedded systems, and Android.</p>
+Windows, embedded systems, Android, and iOS.</p>
 <p>Also, we show how to use it for speech recognition with pre-trained models.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/videos.html">Installation videos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/linux.html">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/macos.html">macOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/windows.html">Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/arm-embedded-linux.html">Embedded Linux (arm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/riscv64-embedded-linux.html">Embedded Linux (riscv64)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python/index.html">Python API</a><ul>
@@ -147,9 +158,28 @@ Windows, embedded systems, and Android.</p>
 <li class="toctree-l2"><a class="reference internal" href="android/build-sherpa-ncnn.html">Build sherpa-ncnn for Android</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ios/index.html">iOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ios/demo-videos.html">Video demos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios/build-sherpa-ncnn-swift.html">Build sherpa-ncnn for iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ios/for-the-more-curious-swift.html">For the more curious</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pretrained_models/index.html">Pre-trained models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pretrained_models/small-models.html">Small models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pretrained_models/zipformer-transucer-models.html">Zipformer-transducer-based Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/lstm-transducer-models.html">LSTM-transducer-based Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pretrained_models/conv-emformer-transducer-models.html">Conv-Emformer-transducer-based Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/raspberry-pi-3.html">Raspberry Pi 3B E14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/jetson-nano.html">Jetson Nano</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/jetson-nx.html">Jetson NX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#where-to-get-help">Where to get help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#no-default-input-device-found">No default input device found</a></li>
 </ul>
 </li>
 </ul>
