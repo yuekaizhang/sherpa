@@ -117,9 +117,19 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sherpa/index.html">sherpa</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sherpa/install/index.html">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sherpa/install/index.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sherpa/install/index.html#normal">Normal</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sherpa/install/index.html#for-developers-and-advanced-users">For developers and advanced users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sherpa/install/from_wheels.html">From pre-compiled wheels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_wheels.html#linux-cpu">Linux (CPU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_wheels.html#macos-cpu">macOS (CPU)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_wheels.html#linux-cuda">Linux (CUDA)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sherpa/install/from_source.html">From source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_source.html#install-dependencies">Install dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_source.html#for-general-users">For general users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sherpa/install/from_source.html#for-developers-and-advanced-users">For developers and advanced users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sherpa/install/check_your_installation.html">Check your installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sherpa/install/index.html#where-to-get-help">Where to get help</a></li>
 </ul>
 </li>
@@ -236,6 +246,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="ncnn/python/index.html#recognize-a-file">Recognize a file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ncnn/c-api/index.html">C API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ncnn/c-api/index.html#generate-required-files">Generate required files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ncnn/c-api/index.html#build-shared-libraries">Build shared libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ncnn/c-api/index.html#build-static-libraries">Build static libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ncnn/c-api/index.html#build-decode-file-c-api-c-with-generated-files">Build decode-file-c-api.c with generated files</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ncnn/endpoint.html">Endpointing</a><ul>
@@ -434,6 +453,11 @@
 <li class="toctree-l4"><a class="reference internal" href="onnx/install/aarch64-embedded-linux.html#sherpa-onnx-alsa">sherpa-onnx-alsa</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/install/arm-embedded-linux.html">Embedded Linux (arm)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/install/arm-embedded-linux.html#install-toolchain">Install toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/install/arm-embedded-linux.html#build-sherpa-onnx">Build sherpa-onnx</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="onnx/python/index.html">Python</a><ul>
@@ -455,6 +479,27 @@
 <li class="toctree-l4"><a class="reference internal" href="onnx/python/real-time-speech-recongition-from-a-microphone.html#without-endpoint-detection">Without endpoint detection</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html">Speech recognition from URLs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#decode-a-url">Decode a URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#rtmp">RTMP</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#install-the-server">Install the server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#start-the-server">Start the server</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#start-ffmpeg-to-push-audio-stream">Start ffmpeg to push audio stream</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/python/speech-recognition-from-urls.html#start-sherpa-onnx-to-pull-audio-stream">Start sherpa-onnx to pull audio stream</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="onnx/c-api/index.html">C API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="onnx/c-api/index.html#generate-required-files">Generate required files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/c-api/index.html#build-shared-libraries">Build shared libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/c-api/index.html#build-static-libraries">Build static libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/c-api/index.html#build-decode-file-c-api-c-with-generated-files">Build decode-file-c-api.c with generated files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/c-api/index.html#colab">colab</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="onnx/android/index.html">Android</a><ul>
@@ -570,6 +615,20 @@
 <li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/offline-ctc/nemo/english.html">English</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="onnx/pretrained_models/whisper/index.html">Whisper</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/whisper/export-onnx.html">Export Whisper to ONNX</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/whisper/export-onnx.html#available-models">Available models</a></li>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/whisper/export-onnx.html#export-to-onnx">Export to onnx</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/whisper/tiny.en.html">tiny.en</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="onnx/pretrained_models/whisper/tiny.en.html#real-time-factor-rtf-on-raspberry-pi-4-model-b">Real-time factor (RTF) on Raspberry Pi 4 Model B</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/whisper/colab.html">colab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="onnx/pretrained_models/whisper/huggingface.html">Huggingface space</a></li>
 </ul>
 </li>
 </ul>

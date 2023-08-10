@@ -17,6 +17,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -64,9 +65,11 @@
 <li class="toctree-l3"><a class="reference internal" href="macos.html">macOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="aarch64-embedded-linux.html">Embedded Linux (aarch64)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arm-embedded-linux.html">Embedded Linux (arm)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
@@ -109,7 +112,8 @@
 <span id="install-sherpa-onnx-on-linux"></span><h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h1>
 <p>This page describes how to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> on Linux.</p>
 <p>All you need is to run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Nvidia GPU (CUDA)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -117,6 +121,22 @@ cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<s
 make<span class="w"> </span>-j6
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span>-DSHERPA_ONNX_ENABLE_GPU<span class="o">=</span>ON<span class="w"> </span>..
+make<span class="w"> </span>-j6
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You need to install CUDA toolkit. Otherwise, you would get
+errors at runtime.</p>
+<p>You can refer to <a class="reference external" href="https://k2-fsa.github.io/k2/installation/cuda-cudnn.html">https://k2-fsa.github.io/k2/installation/cuda-cudnn.html</a>
+to install CUDA toolkit.</p>
+</div>
+</div></div>
 <p>After building, you will find an executable <code class="docutils literal notranslate"><span class="pre">sherpa-onnx</span></code> inside the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory.</p>
 <p>That’s it!</p>
 <p>Please refer to <a class="reference internal" href="../pretrained_models/index.html#sherpa-onnx-pre-trained-models"><span class="std std-ref">Pre-trained models</span></a> for a list of pre-trained

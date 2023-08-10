@@ -17,6 +17,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -70,8 +71,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="decode-files.html">Decode files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="real-time-speech-recongition-from-a-microphone.html">Real-time speech recognition from a microphone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="speech-recognition-from-urls.html">Speech recognition from URLs</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
@@ -124,18 +127,36 @@ use Method 2 or 3.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-onnx
 </pre></div>
 </div>
+<p>To check you have installed <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> successfully, please run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sherpa_onnx; print(sherpa_onnx.__file__)&quot;</span>
+
+which<span class="w"> </span>sherpa-onnx
+sherpa-onnx<span class="w"> </span>--help
+
+ls<span class="w"> </span>-lh<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>sherpa-onnx<span class="k">))</span>/sherpa-onnx*
+</pre></div>
+</div>
 </section>
 <section id="method-2-from-source">
 <h2>Method 2 (From source)<a class="headerlink" href="#method-2-from-source" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Nvidia GPU (CUDA)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
 python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">export</span><span class="w"> </span><span class="nv">SHERPA_ONNX_CMAKE_ARGS</span><span class="o">=</span><span class="s2">&quot;-DSHERPA_ONNX_ENABLE_GPU=ON&quot;</span>
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+python3<span class="w"> </span>setup.py<span class="w"> </span>install
+</pre></div>
+</div>
+</div></div>
 </section>
 <section id="method-3-for-developers">
 <h2>Method 3 (For developers)<a class="headerlink" href="#method-3-for-developers" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">CPU</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Nvidia GPU (CUDA)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx
 mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -153,6 +174,33 @@ make<span class="w"> </span>-j
 <span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/../sherpa-onnx/python/:<span class="nv">$PWD</span>/lib:<span class="nv">$PYTHONPATH</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx
+<span class="nb">cd</span><span class="w"> </span>sherpa-onnx
+mkdir<span class="w"> </span>build
+<span class="nb">cd</span><span class="w"> </span>build
+
+cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_PYTHON<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DBUILD_SHARED_LIBS<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_CHECK<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_PORTAUDIO<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_C_API<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_WEBSOCKET<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-DSHERPA_ONNX_ENABLE_GPU<span class="o">=</span>ON<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>..
+
+make<span class="w"> </span>-j
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>/../sherpa-onnx/python/:<span class="nv">$PWD</span>/lib:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You need to install CUDA toolkit. Otherwise, you would get
+errors at runtime.</p>
+<p>You can refer to <a class="reference external" href="https://k2-fsa.github.io/k2/installation/cuda-cudnn.html">https://k2-fsa.github.io/k2/installation/cuda-cudnn.html</a>
+to install CUDA toolkit.</p>
+</div>
+</div></div>
 </section>
 <section id="check-your-installation">
 <h2>Check your installation<a class="headerlink" href="#check-your-installation" title="Permalink to this headline"></a></h2>
