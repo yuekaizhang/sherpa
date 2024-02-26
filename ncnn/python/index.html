@@ -16,12 +16,13 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="C API" href="../c-api/index.html" />
+    <link rel="next" title="WebAssembly" href="../wasm/index.html" />
     <link rel="prev" title="Embedded Linux (riscv64)" href="../install/riscv64-embedded-linux.html" /> 
 </head>
 
@@ -78,6 +79,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#recognize-a-file">Recognize a file</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../endpoint.html">Endpointing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
@@ -123,7 +125,7 @@
            <div itemprop="articleBody">
              
   <section id="python-api">
-<span id="sherpa-ncnn-python-api"></span><h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline"></a></h1>
+<span id="sherpa-ncnn-python-api"></span><h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this heading"></a></h1>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>It is known to work for <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">&gt;=</span> <span class="pre">3.6</span></code> on Linux, macOS, and Windows.</p>
@@ -138,15 +140,14 @@ a microphone</p></li>
 </ol>
 </div></blockquote>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">1</span></code> of the  <code class="docutils literal notranslate"><span class="pre">4</span></code> methods below to install the Python package <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a>:</p>
 <section id="method-1">
-<h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline"></a></h3>
+<h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this heading"></a></h3>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>This method works only on <code class="docutils literal notranslate"><span class="pre">x86/x86_64</span></code> systems: Linux, macOS and Windows.</p>
-<p>For other architectures, e.g., Mac M1, Raspberry Pi, etc, please
-use Method 2, 3, or 4.</p>
+<p>This method supports <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">arm64</span></code> (e.g., Mac M1, 64-bit Raspberry Pi),
+and <code class="docutils literal notranslate"><span class="pre">arm32</span></code> (e.g., 32-bit Raspberry Pi).</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sherpa-ncnn
 </pre></div>
@@ -162,7 +163,7 @@ C++ compiler.</p>
 </ul>
 </section>
 <section id="method-2">
-<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline"></a></h3>
+<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
 python3<span class="w"> </span>setup.py<span class="w"> </span>install
@@ -170,13 +171,13 @@ python3<span class="w"> </span>setup.py<span class="w"> </span>install
 </div>
 </section>
 <section id="method-3">
-<h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this headline"></a></h3>
+<h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/k2-fsa/sherpa-ncnn
 </pre></div>
 </div>
 </section>
 <section id="method-4-for-developers-and-embedded-boards">
-<h3>Method 4 (For developers and embedded boards)<a class="headerlink" href="#method-4-for-developers-and-embedded-boards" title="Permalink to this headline"></a></h3>
+<h3>Method 4 (For developers and embedded boards)<a class="headerlink" href="#method-4-for-developers-and-embedded-boards" title="Permalink to this heading"></a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">x86/x86_64</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">32-bit ARM</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">64-bit ARM</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/k2-fsa/sherpa-ncnn
 <span class="nb">cd</span><span class="w"> </span>sherpa-ncnn
@@ -263,7 +264,7 @@ python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;
 </section>
 </section>
 <section id="real-time-recognition-with-a-microphone">
-<h2>Real-time recognition with a microphone<a class="headerlink" href="#real-time-recognition-with-a-microphone" title="Permalink to this headline"></a></h2>
+<h2>Real-time recognition with a microphone<a class="headerlink" href="#real-time-recognition-with-a-microphone" title="Permalink to this heading"></a></h2>
 <p>The following Python code shows how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API for
 real-time speech recognition with a microphone.</p>
 <div class="admonition hint">
@@ -345,7 +346,7 @@ code below.</p>
 </div>
 <p><strong>Code explanation</strong>:</p>
 <section id="import-the-required-packages">
-<h3>1. Import the required packages<a class="headerlink" href="#import-the-required-packages" title="Permalink to this headline"></a></h3>
+<h3>1. Import the required packages<a class="headerlink" href="#import-the-required-packages" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sounddevice</span> <span class="k">as</span> <span class="nn">sd</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -368,7 +369,7 @@ code below.</p>
 </div></blockquote>
 </section>
 <section id="create-the-recognizer">
-<h3>2. Create the recognizer<a class="headerlink" href="#create-the-recognizer" title="Permalink to this headline"></a></h3>
+<h3>2. Create the recognizer<a class="headerlink" href="#create-the-recognizer" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_recognizer</span><span class="p">():</span>
     <span class="c1"># Please replace the model files if needed.</span>
     <span class="c1"># See https://k2-fsa.github.io/sherpa/ncnn/pretrained_models/index.html</span>
@@ -416,7 +417,7 @@ and joiner.</p>
 </div>
 </section>
 <section id="start-recording">
-<h3>3. Start recording<a class="headerlink" href="#start-recording" title="Permalink to this headline"></a></h3>
+<h3>3. Start recording<a class="headerlink" href="#start-recording" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">sample_rate</span>
     <span class="k">with</span> <span class="n">sd</span><span class="o">.</span><span class="n">InputStream</span><span class="p">(</span>
 </pre></div>
@@ -433,7 +434,7 @@ all models at present.</p></li>
 </div></blockquote>
 </section>
 <section id="read-audio-samples-from-the-microphone">
-<h3>4. Read audio samples from the microphone<a class="headerlink" href="#read-audio-samples-from-the-microphone" title="Permalink to this headline"></a></h3>
+<h3>4. Read audio samples from the microphone<a class="headerlink" href="#read-audio-samples-from-the-microphone" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">samples_per_read</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">sample_rate</span><span class="p">)</span>  <span class="c1"># 0.1 second = 100 ms</span>
     <span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -450,7 +451,7 @@ value, e.g., <code class="docutils literal notranslate"><span class="pre">200</s
 </div></blockquote>
 </section>
 <section id="invoke-the-recognizer-with-audio-samples">
-<h3>5. Invoke the recognizer with audio samples<a class="headerlink" href="#invoke-the-recognizer-with-audio-samples" title="Permalink to this headline"></a></h3>
+<h3>5. Invoke the recognizer with audio samples<a class="headerlink" href="#invoke-the-recognizer-with-audio-samples" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">samples_per_read</span><span class="p">)</span>  <span class="c1"># a blocking read</span>
 </pre></div>
 </div>
@@ -465,7 +466,7 @@ automatically. There is no separate call for decoding.</p></li>
 </div></blockquote>
 </section>
 <section id="get-the-recognition-result">
-<h3>6. Get the recognition result<a class="headerlink" href="#get-the-recognition-result" title="Permalink to this headline"></a></h3>
+<h3>6. Get the recognition result<a class="headerlink" href="#get-the-recognition-result" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">recognizer</span><span class="o">.</span><span class="n">accept_waveform</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">text</span>
@@ -478,7 +479,7 @@ and don’t print to the console if there is nothing new recognized.</p>
 <p>That’s it!</p>
 </section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"></a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h3>
 <p>In summary, you need to:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -504,7 +505,7 @@ and don’t print to the console if there is nothing new recognized.</p>
 </section>
 </section>
 <section id="recognize-a-file">
-<h2>Recognize a file<a class="headerlink" href="#recognize-a-file" title="Permalink to this headline"></a></h2>
+<h2>Recognize a file<a class="headerlink" href="#recognize-a-file" title="Permalink to this heading"></a></h2>
 <p>The following Python code shows how to use <a class="reference external" href="https://github.com/k2-fsa/sherpa-ncnn">sherpa-ncnn</a> Python API to
 recognize a wave file.</p>
 <div class="admonition caution">
@@ -567,6 +568,10 @@ encoded.</p>
     <span class="n">recognizer</span><span class="o">.</span><span class="n">input_finished</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">recognizer</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -602,13 +607,13 @@ and joiner.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../install/riscv64-embedded-linux.html" class="btn btn-neutral float-left" title="Embedded Linux (riscv64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../c-api/index.html" class="btn btn-neutral float-right" title="C API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../wasm/index.html" class="btn btn-neutral float-right" title="WebAssembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
