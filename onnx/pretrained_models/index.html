@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Online transducer models" href="online-transducer/index.html" />
-    <link rel="prev" title="Pre-trained models" href="../punctuation/pretrained_models.html" /> 
+    <link rel="prev" title="VAD" href="../vad/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,6 +66,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../faqs/index.html">Frequently Asked Question (FAQs)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../c-api/index.html">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../java-api/index.html">Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../javascript-api/index.html">Javascript API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kotlin-api/index.html">Kotlin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
@@ -73,8 +77,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">KWS Open vocabulary keyword spotting (Customized keyword spotting)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../punctuation/index.html">Punctuation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio-tagging/index.html">Audio tagging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Pre-trained models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="online-transducer/index.html">Online transducer models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="online-paraformer/index.html">Online paraformer models</a></li>
@@ -124,8 +131,40 @@
              
   <section id="pre-trained-models">
 <span id="sherpa-onnx-pre-trained-models"></span><h1>Pre-trained models<a class="headerlink" href="#pre-trained-models" title="Permalink to this heading"></a></h1>
+<p>The following table lists links for all pre-trained models.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Description</p></td>
+<td><p>URL</p></td>
+</tr>
+<tr class="row-even"><td><p>Speech recognition (speech to text, ASR)</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Text to speech (TTS)</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models</a></p></td>
+</tr>
+<tr class="row-even"><td><p>VAD</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx">https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Keyword spotting</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/kws-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/kws-models</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Speech identification (Speaker ID)</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/speaker-recongition-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/speaker-recongition-models</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Spoken language identification (Language ID)</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models</a> (multi-lingual whisper)</p></td>
+</tr>
+<tr class="row-even"><td><p>Audio tagging</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/audio-tagging-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/audio-tagging-models</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Punctuation</p></td>
+<td><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/punctuation-models">https://github.com/k2-fsa/sherpa-onnx/releases/tag/punctuation-models</a></p></td>
+</tr>
+</tbody>
+</table>
 <p>In this section, we describe how to download and use all
-available pre-trained models.</p>
+available pre-trained models for speech recognition.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Please install <a class="reference external" href="https://git-lfs.com/">git-lfs</a> before you continue.</p>
@@ -608,14 +647,14 @@ available pre-trained models.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../punctuation/pretrained_models.html" class="btn btn-neutral float-left" title="Pre-trained models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../vad/index.html" class="btn btn-neutral float-left" title="VAD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="online-transducer/index.html" class="btn btn-neutral float-right" title="Online transducer models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022-2023, sherpa development team.</p>
+    <p>&#169; Copyright 2022-2024, sherpa development team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
