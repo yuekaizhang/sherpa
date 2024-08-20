@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>C API &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -82,9 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
@@ -93,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -173,63 +179,74 @@ make<span class="w"> </span>install
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">macOS</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tree<span class="w"> </span>/tmp/sherpa-onnx/shared/
 
-/tmp/sherpa-onnx/shared/
+/tmp/sherpa-onnx/shared
 ├──<span class="w"> </span>bin
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter-microphone
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-speaker-identification
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-language-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-parallel
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts-play
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-punctuation
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-client
-│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-vad-microphone
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-vad-microphone-offline-asr
 ├──<span class="w"> </span>include
-│<span class="w">   </span>├──<span class="w"> </span>cargs.h
 │<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx
 │<span class="w">       </span>└──<span class="w"> </span>c-api
 │<span class="w">           </span>└──<span class="w"> </span>c-api.h
 ├──<span class="w"> </span>lib
-│<span class="w">   </span>├──<span class="w"> </span>cargs.h
-│<span class="w">   </span>├──<span class="w"> </span>libcargs.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libkaldi-native-fbank-core.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.1.15.1.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.dylib<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.1.15.1.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-c-api.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-core.dylib
-│<span class="w">   </span>└──<span class="w"> </span>libsherpa-onnx-portaudio.dylib
+│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.1.17.1.dylib
+│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.dylib<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.1.17.1.dylib
+│<span class="w">   </span>└──<span class="w"> </span>libsherpa-onnx-c-api.dylib
 └──<span class="w"> </span>sherpa-onnx.pc
 
-<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">18</span><span class="w"> </span>files
+<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">25</span><span class="w"> </span>files
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tree<span class="w"> </span>/tmp/sherpa-onnx/shared/
 
-/tmp/sherpa-onnx/shared/
-<span class="p">|</span>--<span class="w"> </span>bin
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-alsa
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-microphone
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-microphone-offline
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-offline
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-offline-websocket-server
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-online-websocket-client
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>sherpa-onnx-online-websocket-server
-<span class="p">|</span>--<span class="w"> </span>include
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>cargs.h
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>sherpa-onnx
-<span class="p">|</span><span class="w">       </span><span class="sb">`</span>--<span class="w"> </span>c-api
-<span class="p">|</span><span class="w">           </span><span class="sb">`</span>--<span class="w"> </span>c-api.h
-<span class="p">|</span>--<span class="w"> </span>lib
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>cargs.h
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libcargs.so
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libkaldi-native-fbank-core.so
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libonnxruntime.so<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.so.1.15.1
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libonnxruntime.so.1.15.1
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libsherpa-onnx-c-api.so
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libsherpa-onnx-core.so
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>libsherpa-onnx-portaudio.so
-<span class="sb">`</span>--<span class="w"> </span>sherpa-onnx.pc
+/tmp/sherpa-onnx/shared
+├──<span class="w"> </span>bin
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline-speaker-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-language-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-parallel
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts-play-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-client
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-vad-alsa
+├──<span class="w"> </span>include
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx
+│<span class="w">       </span>└──<span class="w"> </span>c-api
+│<span class="w">           </span>└──<span class="w"> </span>c-api.h
+├──<span class="w"> </span>lib
+│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.so
+│<span class="w">   </span>└──<span class="w"> </span>libsherpa-onnx-c-api.so
+└──<span class="w"> </span>sherpa-onnx.pc
 
-<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">19</span><span class="w"> </span>files
+<span class="m">6</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">23</span><span class="w"> </span>files
 </pre></div>
 </div>
 </div></div>
@@ -258,63 +275,103 @@ make<span class="w"> </span>install
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">macOS</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tree<span class="w"> </span>/tmp/sherpa-onnx/static/
 
-/tmp/sherpa-onnx//static/
+/tmp/sherpa-onnx/static
 ├──<span class="w"> </span>bin
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter-microphone
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-speaker-identification
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-language-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-parallel
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts-play
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-punctuation
 │<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-client
-│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-vad-microphone
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-vad-microphone-offline-asr
 ├──<span class="w"> </span>include
-│<span class="w">   </span>├──<span class="w"> </span>cargs.h
 │<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx
 │<span class="w">       </span>└──<span class="w"> </span>c-api
 │<span class="w">           </span>└──<span class="w"> </span>c-api.h
 ├──<span class="w"> </span>lib
-│<span class="w">   </span>├──<span class="w"> </span>cargs.h
-│<span class="w">   </span>├──<span class="w"> </span>libcargs.a
+│<span class="w">   </span>├──<span class="w"> </span>libespeak-ng.a
+│<span class="w">   </span>├──<span class="w"> </span>libkaldi-decoder-core.a
 │<span class="w">   </span>├──<span class="w"> </span>libkaldi-native-fbank-core.a
-│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.1.15.1.dylib
-│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.dylib<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.1.15.1.dylib
+│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.a
+│<span class="w">   </span>├──<span class="w"> </span>libpiper_phonemize.a
 │<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-c-api.a
 │<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-core.a
-│<span class="w">   </span>└──<span class="w"> </span>libsherpa-onnx-portaudio_static.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-fst.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-fstfar.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-kaldifst-core.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-portaudio_static.a
+│<span class="w">   </span>├──<span class="w"> </span>libssentencepiece_core.a
+│<span class="w">   </span>└──<span class="w"> </span>libucd.a
 └──<span class="w"> </span>sherpa-onnx.pc
 
-<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">18</span><span class="w"> </span>files
+<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">35</span><span class="w"> </span>files
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tree<span class="w"> </span>/tmp/sherpa-onnx/static/
 
-/tmp/sherpa-onnx/static/
-<span class="p">|</span>--<span class="w"> </span>bin
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-alsa
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-microphone
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-microphone-offline
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-offline
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-offline-websocket-server
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>sherpa-onnx-online-websocket-client
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>sherpa-onnx-online-websocket-server
-<span class="p">|</span>--<span class="w"> </span>include
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>cargs.h
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>sherpa-onnx
-<span class="p">|</span><span class="w">       </span><span class="sb">`</span>--<span class="w"> </span>c-api
-<span class="p">|</span><span class="w">           </span><span class="sb">`</span>--<span class="w"> </span>c-api.h
-<span class="p">|</span>--<span class="w"> </span>lib
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>cargs.h
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libcargs.a
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libkaldi-native-fbank-core.a
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libonnxruntime.so<span class="w"> </span>-&gt;<span class="w"> </span>libonnxruntime.so.1.15.1
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libonnxruntime.so.1.15.1
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libsherpa-onnx-c-api.a
-<span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>libsherpa-onnx-core.a
-<span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>libsherpa-onnx-portaudio_static.a
-<span class="sb">`</span>--<span class="w"> </span>sherpa-onnx.pc
+/tmp/sherpa-onnx/static
+├──<span class="w"> </span>bin
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-alsa-offline-speaker-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-keyword-spotter-microphone
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-microphone-offline-speaker-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-audio-tagging
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-language-identification
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-parallel
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts-play
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-tts-play-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-offline-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-punctuation
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-client
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-online-websocket-server
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-vad-alsa
+│<span class="w">   </span>├──<span class="w"> </span>sherpa-onnx-vad-microphone
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx-vad-microphone-offline-asr
+├──<span class="w"> </span>include
+│<span class="w">   </span>└──<span class="w"> </span>sherpa-onnx
+│<span class="w">       </span>└──<span class="w"> </span>c-api
+│<span class="w">           </span>└──<span class="w"> </span>c-api.h
+├──<span class="w"> </span>lib
+│<span class="w">   </span>├──<span class="w"> </span>libespeak-ng.a
+│<span class="w">   </span>├──<span class="w"> </span>libkaldi-decoder-core.a
+│<span class="w">   </span>├──<span class="w"> </span>libkaldi-native-fbank-core.a
+│<span class="w">   </span>├──<span class="w"> </span>libonnxruntime.a
+│<span class="w">   </span>├──<span class="w"> </span>libpiper_phonemize.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-c-api.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-core.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-fst.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-fstfar.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-kaldifst-core.a
+│<span class="w">   </span>├──<span class="w"> </span>libsherpa-onnx-portaudio_static.a
+│<span class="w">   </span>├──<span class="w"> </span>libssentencepiece_core.a
+│<span class="w">   </span>└──<span class="w"> </span>libucd.a
+└──<span class="w"> </span>sherpa-onnx.pc
 
-<span class="m">5</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">19</span><span class="w"> </span>files
+<span class="m">6</span><span class="w"> </span>directories,<span class="w"> </span><span class="m">42</span><span class="w"> </span>files
 </pre></div>
 </div>
 </div></div>
@@ -345,6 +402,17 @@ gcc<span class="w"> </span>-o<span class="w"> </span>decode-file-c-api<span clas
 </pre></div>
 </div>
 </div></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order of linking the libraries matters. Please see</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Static link without TTS: <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-static-no-tts.pc.in">https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-static-no-tts.pc.in</a></p></li>
+<li><p>Static link with TTS: <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-static.pc.in">https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-static.pc.in</a></p></li>
+<li><p>Dynamic link: <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-shared.pc.in">https://github.com/k2-fsa/sherpa-onnx/blob/master/cmake/sherpa-onnx-shared.pc.in</a></p></li>
+</ul>
+</div></blockquote>
+</div>
 </section>
 <section id="colab">
 <h2>colab<a class="headerlink" href="#colab" title="Permalink to this heading"></a></h2>
@@ -382,7 +450,18 @@ for you to try the C API of <a class="reference external" href="https://github.c
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

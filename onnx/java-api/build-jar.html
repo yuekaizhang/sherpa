@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Build the jar package &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -70,7 +72,10 @@
 <li class="toctree-l3"><a class="reference internal" href="build-jni-macos.html">Build JNI interface (macOS)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build-jni-linux.html">Build JNI interface (Linux)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build-jni-windows.html">Build JNI interface (Windows)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Build the jar package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Build the jar package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-pre-built-jar">Download pre-built jar</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </li>
@@ -79,9 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
@@ -90,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -128,6 +137,10 @@
              
   <section id="build-the-jar-package">
 <h1>Build the jar package<a class="headerlink" href="#build-the-jar-package" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please see the end of this page for how to download pre-built <code class="docutils literal notranslate"><span class="pre">jar</span></code>.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sherpa-onnx/sherpa-onnx/java-api
 ls<span class="w"> </span>-lh
 </pre></div>
@@ -164,6 +177,26 @@ drwxrwxr-x 3 fangjun fangjun 4.0K May 15 03:58 com
 <div><p><a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/tree/master/sherpa-onnx/java-api/src/com/k2fsa/sherpa/onnx">https://github.com/k2-fsa/sherpa-onnx/tree/master/sherpa-onnx/java-api/src/com/k2fsa/sherpa/onnx</a></p>
 </div></blockquote>
 </div>
+<section id="download-pre-built-jar">
+<h2>Download pre-built jar<a class="headerlink" href="#download-pre-built-jar" title="Permalink to this heading"></a></h2>
+<p>If you don’t want to build <code class="docutils literal notranslate"><span class="pre">jar</span></code> by yourself, you can download pre-built <code class="docutils literal notranslate"><span class="pre">jar</span></code> from
+from</p>
+<blockquote>
+<div><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/jni">https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/jni</a></p>
+</div></blockquote>
+<p>For Chinese users, please use</p>
+<blockquote>
+<div><p><a class="reference external" href="https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/tree/main/jni">https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/tree/main/jni</a></p>
+</div></blockquote>
+<p>Please always use the latest version. In the following, we describe how to download
+the version <code class="docutils literal notranslate"><span class="pre">1.10.2</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/jni/sherpa-onnx-v1.10.2.jar
+
+<span class="c1"># For Chinese users</span>
+<span class="c1"># wget https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/resolve/main/jni/sherpa-onnx-v1.10.2.jar</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -194,7 +227,18 @@ drwxrwxr-x 3 fangjun fangjun 4.0K May 15 03:58 com
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

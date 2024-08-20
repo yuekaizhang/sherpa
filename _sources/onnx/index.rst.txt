@@ -34,9 +34,12 @@ Also, we show how to use it for speech recognition with pre-trained models.
    ./swift-api/index
    ./go-api/index
    ./csharp-api/index
+   ./pascal-api/index
+   ./lazarus/index
    ./wasm/index
    ./android/index
    ./ios/index
+   ./flutter/index
    ./websocket/index
    ./hotwords/index
    ./kws/index
@@ -45,6 +48,7 @@ Also, we show how to use it for speech recognition with pre-trained models.
    ./spoken-language-identification/index
    ./vad/index
    ./pretrained_models/index
+   ./sense-voice/index
 
 .. toctree::
    :maxdepth: 5

@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Jetson NX &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -137,19 +139,19 @@
 <section id="rtf-2-threads">
 <h2>RTF (2 threads)<a class="headerlink" href="#rtf-2-threads" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="ncnn/examples/pic/jetson-nx/rtf-2-threads.pic.jpg"><img alt="RTF for 2 threads" src="ncnn/examples/pic/jetson-nx/rtf-2-threads.pic.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/rtf-2-threads.jpg"><img alt="RTF for 2 threads" src="../../_images/rtf-2-threads.jpg" style="width: 600px;" /></a>
 </div></blockquote>
 </section>
 <section id="rtf-4-threads">
 <h2>RTF (4 threads)<a class="headerlink" href="#rtf-4-threads" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="ncnn/examples/pic/jetson-nx/rtf-4-threads.pic.jpg"><img alt="RTF for 4 threads" src="ncnn/examples/pic/jetson-nx/rtf-4-threads.pic.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/rtf-4-threads1.jpg"><img alt="RTF for 4 threads" src="../../_images/rtf-4-threads1.jpg" style="width: 600px;" /></a>
 </div></blockquote>
 </section>
 <section id="rtf-6-threads">
 <h2>RTF (6 threads)<a class="headerlink" href="#rtf-6-threads" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><a class="reference internal image-reference" href="ncnn/examples/pic/jetson-nx/rtf-6-threads.pic.jpg"><img alt="RTF for 6 threads" src="ncnn/examples/pic/jetson-nx/rtf-6-threads.pic.jpg" style="width: 600px;" /></a>
+<div><a class="reference internal image-reference" href="../../_images/rtf-6-threads.jpg"><img alt="RTF for 6 threads" src="../../_images/rtf-6-threads.jpg" style="width: 600px;" /></a>
 </div></blockquote>
 </section>
 </section>
@@ -182,7 +184,18 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

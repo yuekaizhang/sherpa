@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Build JNI interface (Windows) &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -69,7 +71,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Java API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="build-jni-macos.html">Build JNI interface (macOS)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="build-jni-linux.html">Build JNI interface (Linux)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Build JNI interface (Windows)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Build JNI interface (Windows)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-pre-built-jni-libs">Download pre-built JNI libs</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="build-jar.html">Build the jar package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
@@ -79,9 +84,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
@@ -90,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -128,11 +137,74 @@
              
   <section id="build-jni-interface-windows">
 <span id="sherpa-onnx-jni-windows-build"></span><h1>Build JNI interface (Windows)<a class="headerlink" href="#build-jni-interface-windows" title="Permalink to this heading"></a></h1>
-<p>Please see <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/issues/882">https://github.com/k2-fsa/sherpa-onnx/issues/882</a>.</p>
+<p>If you want to build <code class="docutils literal notranslate"><span class="pre">JNI</span></code> libs by yourself, please see <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/issues/882">https://github.com/k2-fsa/sherpa-onnx/issues/882</a>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>The PDFs in the above link are in Chinese.</p>
 </div>
+<p>If you want to download pre-built <code class="docutils literal notranslate"><span class="pre">JNI</span></code> libs, please see below.</p>
+<section id="download-pre-built-jni-libs">
+<h2>Download pre-built JNI libs<a class="headerlink" href="#download-pre-built-jni-libs" title="Permalink to this heading"></a></h2>
+<p>If you don’t want to build <code class="docutils literal notranslate"><span class="pre">JNI</span></code> libs by yourself, please download pre-built <code class="docutils literal notranslate"><span class="pre">JNI</span></code>
+libs from</p>
+<blockquote>
+<div><p><a class="reference external" href="https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/jni">https://huggingface.co/csukuangfj/sherpa-onnx-libs/tree/main/jni</a></p>
+</div></blockquote>
+<p>For Chinese users, please use</p>
+<blockquote>
+<div><p><a class="reference external" href="https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/tree/main/jni">https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/tree/main/jni</a></p>
+</div></blockquote>
+<p>Please always use the latest version. In the following, we describe how to download
+the version <code class="docutils literal notranslate"><span class="pre">1.10.2</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-libs/resolve/main/jni/sherpa-onnx-v1.10.2-win-x64-jni.tar.bz2
+
+<span class="c1"># For Chinese users</span>
+<span class="c1"># wget https://hf-mirror.com/csukuangfj/sherpa-onnx-libs/resolve/main/jni/sherpa-onnx-v1.10.2-win-x64-jni.tar.bz2</span>
+
+tar<span class="w"> </span>xf<span class="w"> </span>sherpa-onnx-v1.10.2-win-x64-jni.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-v1.10.2-win-x64-jni.tar.bz2
+</pre></div>
+</div>
+<p>You should find the following files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>sherpa-onnx-v1.10.2-win-x64-jni/lib/
+
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>12K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>cargs.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.1K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>cargs.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>271K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>espeak-ng.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>49K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>espeak-ng.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>533K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:44<span class="w"> </span>kaldi-decoder-core.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.1M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:44<span class="w"> </span>kaldi-decoder-core.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>109K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>kaldi-native-fbank-core.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>103K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>kaldi-native-fbank-core.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>10M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>onnxruntime.dll
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>22K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>onnxruntime_providers_shared.dll
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>439K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>piper_phonemize.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>212K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>piper_phonemize.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>76K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-c-api.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>63K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-c-api.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.7M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-core.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">2</span>.5M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-core.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.4M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-fst.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.8M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-fst.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>30K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-fstfar.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>24K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-fstfar.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>109K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-jni.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>92K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:47<span class="w"> </span>sherpa-onnx-jni.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">1</span>.1M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:44<span class="w"> </span>sherpa-onnx-kaldifst-core.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">2</span>.8M<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:44<span class="w"> </span>sherpa-onnx-kaldifst-core.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>173K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-portaudio.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>43K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>sherpa-onnx-portaudio.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>135K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>ssentencepiece_core.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>174K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>ssentencepiece_core.lib
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>168K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>ucd.dll
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">5</span>.9K<span class="w"> </span>Jun<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">11</span>:43<span class="w"> </span>ucd.lib
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Only <code class="docutils literal notranslate"><span class="pre">*.dll</span></code> files are needed during runtime.</p>
+</div>
+</section>
 </section>
 
 
@@ -163,7 +235,18 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

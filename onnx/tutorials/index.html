@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Tutorials &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -75,9 +77,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
@@ -86,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -131,6 +137,9 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cn.html">中文资料 (Chinese tutorials)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cn.html#sherpa-onnx-cpu-docker">2024-07-03【🆓 語音辨識引擎sherpa-onnx CPU上篇】讓您輕鬆體驗語音辨識功能(Docker架設)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cn.html#sherpaonnxttsengine-android-tts">2024-06-10 SherpaOnnxTtsEngine - Android 本地 TTS 语言转文本引擎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cn.html#llm100-01windows-1">2024-06-10 用LLM搭建100个应用（一）：从0到1搭建自己的Windows贾维斯(1)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cn.html#sherpa-onnx">2024-05-09 记录一下sherpa-onnx的安装及使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cn.html#rv1106-rv1109-rv1126sherpa-onnx-tts">2024-04-09 rv1106&amp;rv1109&amp;rv1126移植sherpa-onnx 实现离线TTS功能</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cn.html#snowboy-kaldi-k2-fsa-sherpa-onnx">2023-08-08 snowboy+新一代kaldi（k2-fsa）sherpa-onnx实现离线语音识别【语音助手】</a></li>
@@ -169,7 +178,18 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

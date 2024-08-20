@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Hotwords (Contextual biasing) &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -72,9 +74,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../android/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Hotwords (Contextual biasing)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-are-hotwords">What are hotwords</a></li>
@@ -93,6 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -152,7 +158,7 @@ for the construction details of Aho-corasick.</p>
 <div><figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/context_graph.png"><img alt="The aho-corasick for &quot;HE/SHE/SHELL/HIS/THIS&quot;" src="../../_images/context_graph.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">The Aho-corasick for “HE/SHE/SHELL/HIS/THIS”</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">The Aho-corasick for “HE/SHE/SHELL/HIS/THIS”</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -601,10 +607,10 @@ Real time factor (RTF): 2.463/23.340 = 0.106
 <h3>Modeling unit is cjkchar<a class="headerlink" href="#modeling-unit-is-cjkchar" title="Permalink to this heading"></a></h3>
 <p><strong>Download the model</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-conformer-zh-stateless2-2023-05-23
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23.tar.bz2
+
 ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-conformer-zh-stateless2-2023-05-23<span class="w"> </span>exp-zh
 </pre></div>
 </div>
@@ -785,11 +791,10 @@ Real time factor (RTF): 2.636/20.328 = 0.130
 <p><strong>Download the model</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/sherpa-onnx
 
-<span class="nv">GIT_LFS_SKIP_SMUDGE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/csukuangfj/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
-<span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.onnx&quot;</span>
-git<span class="w"> </span>lfs<span class="w"> </span>pull<span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;bpe.model&quot;</span>
-<span class="nb">cd</span><span class="w"> </span>..
+wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+rm<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
+
 ln<span class="w"> </span>-s<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20<span class="w"> </span>exp-mixed
 </pre></div>
 </div>
@@ -961,7 +966,18 @@ Real time factor (RTF): 3.060/14.743 = 0.208
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>

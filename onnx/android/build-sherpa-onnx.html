@@ -1,3 +1,4 @@
+<!-- see https://stackoverflow.com/questions/2454577/sphinx-restructuredtext-show-hide-code-snippets -->
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
@@ -7,6 +8,7 @@
   <title>Build sherpa-onnx for Android &mdash; sherpa 1.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/user.define.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -72,6 +74,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../swift-api/index.html">Swift API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../go-api/index.html">Go API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../csharp-api/index.html">C# API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pascal-api/index.html">Pascal API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lazarus/index.html">Lazarus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../wasm/index.html">WebAssembly</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Android</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="prebuilt-apk.html">Pre-built APKs</a></li>
@@ -88,6 +92,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../ios/index.html">iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flutter/index.html">Flutter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../websocket/index.html">WebSocket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hotwords/index.html">Hotwords (Contextual biasing)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../kws/index.html">Keyword spotting</a></li>
@@ -96,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../spoken-language-identification/index.html">Spoken language identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../vad/index.html">VAD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pretrained_models/index.html">Pre-trained models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-voice/index.html">SenseVoice</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../speaker-identification/index.html">Speaker Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tts/index.html">Text-to-speech (TTS)</a></li>
 </ul>
@@ -142,12 +148,12 @@ and <code class="docutils literal notranslate"><span class="pre">text-to-speech<
 <p>If you are using Windows or if you don’t want to build the shared libraries,
 you can download pre-built shared libraries by visiting the release page
 <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/">https://github.com/k2-fsa/sherpa-onnx/releases/</a></p>
-<p>For instance, for the relase <code class="docutils literal notranslate"><span class="pre">v1.9.14</span></code>, you can visit
-<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.9.14">https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.9.14</a>
-and download the file <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-v1.9.14-android.tar.bz2</span></code>
+<p>For instance, for the relase <code class="docutils literal notranslate"><span class="pre">v1.10.19</span></code>, you can visit
+<a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.10.19">https://github.com/k2-fsa/sherpa-onnx/releases/tag/v1.10.19</a>
+and download the file <code class="docutils literal notranslate"><span class="pre">sherpa-onnx-v1.10.19-android.tar.bz2</span></code>
 using the following command:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.9.14/sherpa-onnx-v1.9.14-android.tar.bz2
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.10.19/sherpa-onnx-v1.10.19-android.tar.bz2
 </pre></div>
 </div>
 </div></blockquote>
@@ -181,7 +187,7 @@ Android Studio.</p>
 <p>Any recent version of Android Studio should work fine. Also, you can use
 the default settings of Android Studio during installation.</p>
 <p>For reference, we post the version we are using below:</p>
-<a class="reference internal image-reference" href="../../_images/android-studio-version1.png"><img alt="screenshot of my version of Android Studio" src="../../_images/android-studio-version1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/android-studio-version1.png"><img alt="screenshot of my version of Android Studio" class="align-center" src="../../_images/android-studio-version1.png" style="width: 600px;" /></a>
 </div>
 </section>
 <section id="download-sherpa-onnx">
@@ -198,7 +204,7 @@ the default settings of Android Studio during installation.</p>
 <div><figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../../_images/start-android-studio1.png"><img alt="Start Android Studio" src="../../_images/start-android-studio1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Step 1: Click <code class="docutils literal notranslate"><span class="pre">Open</span></code> to select <code class="docutils literal notranslate"><span class="pre">sherpa-onnx/android/SherpaOnnx</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Step 1: Click <code class="docutils literal notranslate"><span class="pre">Open</span></code> to select <code class="docutils literal notranslate"><span class="pre">sherpa-onnx/android/SherpaOnnx</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -207,7 +213,7 @@ the default settings of Android Studio during installation.</p>
 <div><figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../../_images/open-sherpa-onnx.png"><img alt="Open SherpaOnnx" src="../../_images/open-sherpa-onnx.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Step 2: Open <code class="docutils literal notranslate"><span class="pre">SherpaOnnx</span></code>.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Step 2: Open <code class="docutils literal notranslate"><span class="pre">SherpaOnnx</span></code>.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -216,7 +222,7 @@ the default settings of Android Studio during installation.</p>
 <div><figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../../_images/select-sdk-manager1.png"><img alt="Select Tools -&gt; SDK Manager" src="../../_images/select-sdk-manager1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Step 3: Select <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">SDK</span> <span class="pre">Manager</span></code>.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Step 3: Select <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">SDK</span> <span class="pre">Manager</span></code>.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -225,7 +231,7 @@ the default settings of Android Studio during installation.</p>
 <div><figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/ndk-tools1.png"><img alt="Install NDK" src="../../_images/ndk-tools1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Step 4: Install NDK.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Step 4: Install NDK.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -306,12 +312,10 @@ to build the C++ libraries, please use the above colab notebook.</p>
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-arm64-v8a/install/lib/lib*.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>848K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libkaldi-native-fbank-core.so
--rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>13M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libonnxruntime.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>29K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-onnx-c-api.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>313K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-onnx-core.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>34K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">15</span>:54<span class="w"> </span>build-android-arm64-v8a/install/lib/libsherpa-onnx-jni.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-arm64-v8a/install/lib/
+
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>15M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">12</span>:54<span class="w"> </span>libonnxruntime.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.7M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">12</span>:54<span class="w"> </span>libsherpa-onnx-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/arm64-v8a/</span></code>:</p>
@@ -319,15 +323,9 @@ to build the C++ libraries, please use the above colab notebook.</p>
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/so-libs-for-arm64-v8a1.png"><img alt="Generated shared libraries for arm64-v8a" src="../../_images/so-libs-for-arm64-v8a1.png" style="width: 600px;" /></a>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/so-libs-for-arm64-v8a.jpg"><img alt="Generated shared libraries for arm64-v8a" src="../../_images/so-libs-for-arm64-v8a.jpg" style="width: 600px;" /></a>
 </figure>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>You may see more files than it is shown in the screenshot. That is totally fine
-since we are extending <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a>. The first thing to remember is to always
-use the wildcard <code class="docutils literal notranslate"><span class="pre">lib*.so</span></code> in the <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
-</div>
 </section>
 <section id="build-for-armv7-eabi">
 <h3>Build for armv7-eabi<a class="headerlink" href="#build-for-armv7-eabi" title="Permalink to this heading"></a></h3>
@@ -336,13 +334,10 @@ use the wildcard <code class="docutils literal notranslate"><span class="pre">li
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-armv7-eabi/install/lib/lib*.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-armv7-eabi/install/lib
 
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>513K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libkaldi-native-fbank-core.so
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">9</span>.1M<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libonnxruntime.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>19K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-c-api.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>298K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-core.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>22K<span class="w"> </span>Mar<span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">21</span>:48<span class="w"> </span>build-android-armv7-eabi/install/lib/libsherpa-onnx-jni.so
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>10M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:18<span class="w"> </span>libonnxruntime.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">2</span>.1M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:18<span class="w"> </span>libsherpa-onnx-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/armeabi-v7a</span></code>:</p>
@@ -350,8 +345,8 @@ use the wildcard <code class="docutils literal notranslate"><span class="pre">li
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/so-libs-for-armv7a-eabi.png"><img alt="Generated shared libraries for armv7-eabi" src="../../_images/so-libs-for-armv7a-eabi.png" style="width: 600px;" /></a>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/so-libs-for-armv7a-eabi.jpg"><img alt="Generated shared libraries for armv7-eabi" src="../../_images/so-libs-for-armv7a-eabi.jpg" style="width: 600px;" /></a>
 </figure>
 </section>
 <section id="build-for-x86-64">
@@ -361,21 +356,19 @@ use the wildcard <code class="docutils literal notranslate"><span class="pre">li
 </pre></div>
 </div>
 <p>After building, you will find the following shared libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86-64/install/lib/lib*.so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86-64/install/lib/
 
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>901K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libkaldi-native-fbank-core.so
--rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>15M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libonnxruntime.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>347K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libsherpa-onnx-core.so
--rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>32K<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:00<span class="w"> </span>build-android-x86-64/install/lib/libsherpa-onnx-jni.so
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>17M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:26<span class="w"> </span>libonnxruntime.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">4</span>.0M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:26<span class="w"> </span>libsherpa-onnx-jni.so
 </pre></div>
 </div>
 <p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/x86_64/</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build-android-x86-64/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/x86_64/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-x86-64/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/x86_64/
 </pre></div>
 </div>
 <p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/so-libs-for-x86-641.png"><img alt="Generated shared libraries for x86_64" src="../../_images/so-libs-for-x86-641.png" style="width: 600px;" /></a>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/so-libs-for-x86-64.jpg"><img alt="Generated shared libraries for x86_64" src="../../_images/so-libs-for-x86-64.jpg" style="width: 600px;" /></a>
 </figure>
 </section>
 <section id="build-for-x86">
@@ -384,6 +377,21 @@ use the wildcard <code class="docutils literal notranslate"><span class="pre">li
 ./build-android-x86.sh
 </pre></div>
 </div>
+<p>After building, you will find the following shared libraries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>build-android-x86/install/lib/
+
+-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>17M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:28<span class="w"> </span>libonnxruntime.so
+-rwxr-xr-x<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span><span class="m">3</span>.9M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:28<span class="w"> </span>libsherpa-onnx-jni.so
+</pre></div>
+</div>
+<p>Please copy them to <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/jniLibs/x86/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>build-android-x86/install/lib/lib*.so<span class="w"> </span>android/SherpaOnnx/app/src/main/jniLibs/x86/
+</pre></div>
+</div>
+<p>You should see the following screen shot after running the above copy <code class="docutils literal notranslate"><span class="pre">cp</span></code> command.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/so-libs-for-x86.jpg"><img alt="Generated shared libraries for x86" src="../../_images/so-libs-for-x86.jpg" style="width: 600px;" /></a>
+</figure>
 </section>
 </section>
 <section id="download-pre-trained-models">
@@ -401,8 +409,6 @@ is from <a class="reference external" href="https://huggingface.co/pfluo/k2fsa-z
 <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/src/main/assets/</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>android/SherpaOnnx/app/src/main/assets/
 
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git-lfs
-
 wget<span class="w"> </span>https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
 
 tar<span class="w"> </span>xvf<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2
@@ -411,26 +417,27 @@ rm<span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-0
 <span class="nb">cd</span><span class="w"> </span>sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20
 
 <span class="c1"># Now, remove extra files to reduce the file size of the generated apk</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>.git<span class="w"> </span>test_wavs
+rm<span class="w"> </span>-rf<span class="w"> </span>test_wavs
 rm<span class="w"> </span>-f<span class="w"> </span>*.sh<span class="w"> </span>README.md
+rm<span class="w"> </span>-f<span class="w"> </span>bpe.model
+
+rm<span class="w"> </span>-f<span class="w"> </span>encoder-epoch-99-avg-1.int8.onnx
+rm<span class="w"> </span>-f<span class="w"> </span>joiner-epoch-99-avg-1.int8.onnx
+rm<span class="w"> </span>-f<span class="w"> </span>decoder-epoch-99-avg-1.int8.onnx
+rm<span class="w"> </span>-f<span class="w"> </span>bpe.vocab
 </pre></div>
 </div>
 <p>In the end, you should have the following files:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh
 
-total<span class="w"> </span><span class="m">696984</span>
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>13M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>decoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>315M<span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">21</span>:18<span class="w"> </span>encoder-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>12M<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>joiner-epoch-99-avg-1.onnx
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>55K<span class="w"> </span>Feb<span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">21</span>:45<span class="w"> </span>tokens.txt
-
-du<span class="w"> </span>-h<span class="w"> </span>.
-
-340M<span class="w">    </span>.
+-rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>13M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:51<span class="w"> </span>decoder-epoch-99-avg-1.onnx
+-rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>315M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:51<span class="w"> </span>encoder-epoch-99-avg-1.onnx
+-rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>12M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:51<span class="w"> </span>joiner-epoch-99-avg-1.onnx
+-rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">    </span>55K<span class="w"> </span>Nov<span class="w"> </span><span class="m">21</span><span class="w">  </span><span class="m">2023</span><span class="w"> </span>tokens.txt
 </pre></div>
 </div>
 <p>You should see the following screen shot after downloading the pre-trained model:</p>
-<figure class="align-default">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/pre-trained-model-2023-02-20.png"><img alt="Files after downloading the pre-trained model" src="../../_images/pre-trained-model-2023-02-20.png" style="width: 600px;" /></a>
 </figure>
 <div class="admonition hint">
@@ -446,13 +453,13 @@ corresponding code listed in the following screen shot:</p>
 <h2>Generate APK<a class="headerlink" href="#generate-apk" title="Permalink to this heading"></a></h2>
 <p>Finally, it is time to build <a class="reference external" href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a> to generate an APK package.</p>
 <p>Select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">-&gt;</span> <span class="pre">Make</span> <span class="pre">Project</span></code>, as shown in the following screen shot.</p>
-<figure class="align-default">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/build-make-project1.png"><img alt="Select ``Build -&gt; Make Project``" src="../../_images/build-make-project1.png" style="width: 600px;" /></a>
 </figure>
 <p>You can find the generated APK in <code class="docutils literal notranslate"><span class="pre">android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
 
--rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>331M<span class="w"> </span>Feb<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">16</span>:17<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
+-rw-r--r--@<span class="w"> </span><span class="m">1</span><span class="w"> </span>fangjun<span class="w">  </span>staff<span class="w">   </span>329M<span class="w"> </span>Jul<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">13</span>:56<span class="w"> </span>android/SherpaOnnx/app/build/outputs/apk/debug/app-debug.apk
 </pre></div>
 </div>
 <p>Congratulations! You have successfully built an APK for Android.</p>
@@ -460,26 +467,26 @@ corresponding code listed in the following screen shot:</p>
 </section>
 <section id="analyze-the-apk">
 <h2>Analyze the APK<a class="headerlink" href="#analyze-the-apk" title="Permalink to this heading"></a></h2>
-<figure class="align-default">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/analyze-apk1.png"><img alt="Select ``Build -&gt; Analyze APK ...``" src="../../_images/analyze-apk1.png" style="width: 600px;" /></a>
 </figure>
 <p>Select <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">-&gt;</span> <span class="pre">Analyze</span> <span class="pre">APK</span> <span class="pre">...</span></code> in the above screen shot, in the
 popped-up dialog select the generated APK <code class="docutils literal notranslate"><span class="pre">app-debug.apk</span></code>,
 and you will see the following screen shot:</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../../_images/analyze-apk-result1.png"><img alt="Result of analyzing apk" src="../../_images/analyze-apk-result1.png" style="width: 700px;" /></a>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/analyze-apk-result.jpg"><img alt="Result of analyzing apk" src="../../_images/analyze-apk-result.jpg" style="width: 700px;" /></a>
 </figure>
 <p>You can see from the above screen shot that most part of the APK
 is occupied by the pre-trained model, while the runtime, including the shared
-libraries, is only <code class="docutils literal notranslate"><span class="pre">5.4</span> <span class="pre">MB</span></code>.</p>
+libraries, is only <code class="docutils literal notranslate"><span class="pre">7.2</span> <span class="pre">MB</span></code>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>You can see that <code class="docutils literal notranslate"><span class="pre">libonnxruntime.so</span></code> alone occupies <code class="docutils literal notranslate"><span class="pre">5MB</span></code> out of <code class="docutils literal notranslate"><span class="pre">5.4MB</span></code>.</p>
+<p>You can see that <code class="docutils literal notranslate"><span class="pre">libonnxruntime.so</span></code> alone occupies <code class="docutils literal notranslate"><span class="pre">5.8MB</span></code> out of <code class="docutils literal notranslate"><span class="pre">7.2MB</span></code>.</p>
 <p>We use a so-called <code class="docutils literal notranslate"><span class="pre">Full</span> <span class="pre">build</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Mobile</span> <span class="pre">build</span></code>, so the file
 size of the library is somewhat a bit larger.</p>
 <p><code class="docutils literal notranslate"><span class="pre">libonnxruntime.so</span></code> is donwloaded from</p>
 <blockquote>
-<div><p><a class="reference external" href="https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime-android/1.14.0">https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime-android/1.14.0</a></p>
+<div><p><a class="reference external" href="https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime-android/1.17.1">https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime-android/1.17.1</a></p>
 </div></blockquote>
 <p>Please refer to <a class="reference external" href="https://onnxruntime.ai/docs/build/custom.html">https://onnxruntime.ai/docs/build/custom.html</a> for a
 custom build to reduce the file size of <code class="docutils literal notranslate"><span class="pre">libonnxruntime.so</span></code>.</p>
@@ -524,7 +531,18 @@ of <code class="docutils literal notranslate"><span class="pre">onnxruntime</spa
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
 
 </body>
 </html>
