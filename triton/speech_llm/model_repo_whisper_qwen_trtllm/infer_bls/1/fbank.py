@@ -69,7 +69,7 @@ def log_mel_spectrogram(
     log_spec = torch.maximum(log_spec, log_spec.max() - 8.0)
     log_spec = (log_spec + 4.0) / 4.0
     # cast to float 16
-    log_spec = log_spec.half()
+    # log_spec = log_spec.half()
     return log_spec
 
 class FeatureExtractor(torch.nn.Module):
@@ -82,10 +82,17 @@ class FeatureExtractor(torch.nn.Module):
         self.n_mels = n_mels
         self.filters = mel_filters(self.device, n_mels=self.n_mels)
 
-    def compute_feature(self, wav, target: int = 3000):
+    def compute_feature(self, wav, padding_target_len: int = 3000):
+        """
+        Compute the log-Mel spectrogram of the input audio waveform.
+        mel: [1, feature_dim, seq_len]
+        """
         mel = log_mel_spectrogram(wav, self.filters)
-        assert mel.shape[1] <= target, f"{mel.shape[1]} > {target}, audio is too long"
-        if mel.shape[1] < target:
-            mel = F.pad(mel, (0, target - mel.shape[1]), mode='constant')
+        assert padding_target_len <= 3000, f"padding must be less than 3000, got {padding}"
+        if mel.shape[1] < padding_target_len:
+            mel = F.pad(mel, (0, padding_target_len - mel.shape[1]), mode='constant')
+        if mel.shape[1] % 2:
+            # pad to even length for remove_padding case, since conv1d requires even length
+            mel = torch.nn.functional.pad(mel, (0, 1))
         mel = mel.unsqueeze(0)
         return mel
