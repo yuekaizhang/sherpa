@@ -252,14 +252,18 @@ class TritonPythonModel:
         """
         responses, batch_mel_list = [], []
         for request in requests:
-            # in_0 = pb_utils.get_input_tensor_by_name(request, "mel")
+            #in_0 = pb_utils.get_input_tensor_by_name(request, "mel")
             # assert not in_0.is_cpu()
-            # batch_mel_list.append(from_dlpack(in_0.to_dlpack()))
+            #batch_mel_list.append(from_dlpack(in_0.to_dlpack()).to('cuda'))
+
             in_0 = pb_utils.get_input_tensor_by_name(request, "WAV")
+            wav_len = pb_utils.get_input_tensor_by_name(request, "WAV_LENS").as_numpy().item()
             wav = from_dlpack(in_0.to_dlpack())
+            wav = wav[:, :wav_len]
             print(wav[0].shape, 456677)
             mel = self.feature_extractor.compute_feature(wav[0].to('cuda'), padding_target_len=0)
             batch_mel_list.append(mel)
+
         # concatenate all mel tensors in the batch
         # batch_mel = torch.cat(batch_mel_list, dim=0).to(self.device)
         speech_features_list = self.model.process_batch(batch_mel_list)

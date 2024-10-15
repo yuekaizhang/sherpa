@@ -69,7 +69,7 @@ def log_mel_spectrogram(
     log_spec = torch.maximum(log_spec, log_spec.max() - 8.0)
     log_spec = (log_spec + 4.0) / 4.0
     # cast to float 16
-    # log_spec = log_spec.half()
+    log_spec = log_spec.half()
     return log_spec
 
 class FeatureExtractor(torch.nn.Module):
