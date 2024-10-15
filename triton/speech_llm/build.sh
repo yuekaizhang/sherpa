@@ -1,14 +1,23 @@
 huggingface_checkpoint_dir=./whisper_qwen_1.5B
-huggingface-cli download --local-dir $huggingface_checkpoint_dir yuekai/whisper_qwen_multi_hans_zh_triton_checkpoint
+repo=yuekai/whisper_qwen_multi_hans_zh_triton_checkpoint
+adapter_dir=$huggingface_checkpoint_dir/icefall_asr_multi-hans_whisper_qwen2_1.5B/epoch-2-avg-6.pt
+engine_path=$huggingface_checkpoint_dir/qwen2_1.5B_instruct_fp16_merged
+# commands for whisper_qwen_7B
+# huggingface_checkpoint_dir=./whisper_qwen_7B
+# repo=yuekai/whisper_qwen_7b_multi_hans_zh_triton_checkpoint
+# adapter_dir=$huggingface_checkpoint_dir/icefall_asr_multi-hans_whisper_qwen2_7B/epoch-999.pt
+# engine_path=$huggingface_checkpoint_dir/qwen2_7B_instruct_int8_woq_merged
+
+huggingface-cli download --local-dir $huggingface_checkpoint_dir $repo
 cd $huggingface_checkpoint_dir && bash build_qwen.sh && bash build_whisper_encoder.sh && cd -
 
 model_repo=./model_repo_whisper_qwen_trtllm_exp
 rm -rf $model_repo
 cp -r ./model_repo_whisper_qwen_trtllm $model_repo || exit 1
 
-engine_path=$huggingface_checkpoint_dir/qwen2_1.5B_instruct_fp16_merged
+
 encoder_engine_dir=$huggingface_checkpoint_dir/whisper_multi_zh
-adapter_dir=$huggingface_checkpoint_dir/icefall_asr_multi-hans_whisper_qwen2_1.5B/epoch-2-avg-6.pt
+
 max_batch=16
 decoupled_mode=false
 max_queue_delay_microseconds=0

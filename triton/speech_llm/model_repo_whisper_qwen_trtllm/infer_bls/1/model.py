@@ -53,7 +53,7 @@ class TritonPythonModel:
         # TODO: get the decoupled flag from the model config
         self.decoupled = False
 
-    def _tokenize(self, prompt=None, num_speech_tokens=187):
+    def _tokenize(self, num_speech_tokens, prompt=None):
         def preprocess(
             messages,
             tokenizer: transformers.PreTrainedTokenizer,
@@ -235,6 +235,7 @@ class TritonPythonModel:
         else:
             speech_features = pb_utils.get_output_tensor_by_name(inference_response, "speech_features")
             speech_features = torch.utils.dlpack.from_dlpack(speech_features.to_dlpack())
+
             return speech_features
 
     def execute(self, requests):

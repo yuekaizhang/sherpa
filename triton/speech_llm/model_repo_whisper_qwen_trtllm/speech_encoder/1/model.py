@@ -193,7 +193,7 @@ class EncoderProjector(torch.nn.Module):
 
 class WhisperTRTLLM(nn.Module):
 
-    def __init__(self, engine_dir):
+    def __init__(self, engine_dir, llm_dim=1536):
         super().__init__()
         world_size = 1
         runtime_rank = tensorrt_llm.mpi_rank()
@@ -202,7 +202,7 @@ class WhisperTRTLLM(nn.Module):
         engine_dir = Path(engine_dir)
 
         self.encoder = WhisperEncoding(engine_dir)
-        self.encoder_projector = EncoderProjector()
+        self.encoder_projector = EncoderProjector(llm_dim=llm_dim)
         self.encoder_projector = self.encoder_projector.half().to("cuda")
 
     def process_batch(self, mel):
@@ -241,7 +241,8 @@ class TritonPythonModel:
         checkpoint = torch.load(
             adapter_dir, map_location="cpu"
         )
-        self.model = WhisperTRTLLM(engine_dir)
+        self.llm_dim = checkpoint["encoder_projector.linear1.weight"].shape[0]
+        self.model = WhisperTRTLLM(engine_dir, llm_dim=self.llm_dim)
         missing_keys, _ = self.model.load_state_dict(checkpoint, strict=False)
         assert len(missing_keys) == 0, f"Missing keys: {missing_keys}"
         n_mels = int(parameters["n_mels"])
@@ -258,7 +259,8 @@ class TritonPythonModel:
             wav_len = pb_utils.get_input_tensor_by_name(request, "WAV_LENS").as_numpy().item()
             wav = from_dlpack(wav_tensor.to_dlpack())
             wav = wav[:, :wav_len]
-            mel = self.feature_extractor.compute_feature(wav[0].to('cuda'), padding_target_len=0)
+            padding = 3000 if self.llm_dim == 3584 else 0 # WAR: whisper_llm_7b model needs padding
+            mel = self.feature_extractor.compute_feature(wav[0].to('cuda'), padding_target_len=padding)
             batch_mel_list.append(mel)
 
         speech_features_list = self.model.process_batch(batch_mel_list)
