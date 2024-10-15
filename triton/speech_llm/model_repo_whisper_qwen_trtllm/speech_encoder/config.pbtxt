@@ -29,6 +29,10 @@ parameters [
   {
     key: "engine_dir"
     value: { string_value: "${encoder_engine_dir}"}
+  },
+  {
+   key: "n_mels", 
+   value: {string_value:"${n_mels}"} # 128 dim for large-v3, 80 dim for large-v2
   }
 ]
 

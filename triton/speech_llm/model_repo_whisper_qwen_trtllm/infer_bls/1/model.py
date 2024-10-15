@@ -9,7 +9,6 @@ from transformers import AutoTokenizer
 from typing import Dict
 from pathlib import Path
 import traceback
-from .fbank import FeatureExtractor
 
 DEFAULT_SPEECH_TOKEN = "<speech>"
 TEMPLATE = "{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content']}}{% if loop.last %}{{''}}{% else %}{{ '<|im_end|>\n' }}{% endif %}{% endfor %}"
@@ -50,16 +49,9 @@ class TritonPythonModel:
         # https://huggingface.co/Qwen/Qwen2-1.5B-Instruct/blob/main/config.json#L26
         self.vocab_size = 151936 
         self.logger = pb_utils.Logger
-        self.init_model(self.model_config['parameters'])
 
         # TODO: get the decoupled flag from the model config
         self.decoupled = False
-
-    def init_model(self, parameters):
-        for key,value in parameters.items():
-            parameters[key] = value["string_value"]
-        n_mels = int(parameters["n_mels"])
-        self.feature_extractor = FeatureExtractor(n_mels=n_mels)
 
     def _tokenize(self, prompt=None, num_speech_tokens=187):
         def preprocess(
@@ -228,16 +220,14 @@ class TritonPythonModel:
                 yield response
 
     def _extract_speech_embeddings(self, wav, wav_len):
-        #mel = self.feature_extractor.compute_feature(wav.to('cuda'), padding_target_len=0)
-        #mel_tensor = pb_utils.Tensor.from_dlpack("mel", to_dlpack(mel))
         wav = torch.from_numpy(wav[0]).to(self.device)
-        mel_tensor = pb_utils.Tensor.from_dlpack("WAV", to_dlpack(wav.unsqueeze(0)))
-        mel_len_tensor = pb_utils.Tensor("WAV_LENS", np.array([[wav_len]], np.int32))
+        wav_tensor = pb_utils.Tensor.from_dlpack("WAV", to_dlpack(wav.unsqueeze(0)))
+        wav_len_tensor = pb_utils.Tensor("WAV_LENS", np.array([[wav_len]], np.int32))
 
         infer_request = pb_utils.InferenceRequest(
             model_name="speech_encoder",
             requested_output_names=["speech_features"],
-            inputs=[mel_tensor, mel_len_tensor],
+            inputs=[wav_tensor, wav_len_tensor],
         )
         inference_response = infer_request.exec()
         if inference_response.has_error():
@@ -253,14 +243,10 @@ class TritonPythonModel:
             wav = pb_utils.get_input_tensor_by_name(request, "WAV").as_numpy()
             assert wav.shape[0] == 1, "Only support batch size 1 for now"
             wav_len = pb_utils.get_input_tensor_by_name(request, "WAV_LENS").as_numpy()
-            print(wav.shape, wav_len)
             wav_len = wav_len.item()
-            #wav = wav[:, :wav_len]
-            #wav = torch.from_numpy(wav[0]).to(self.device)
 
             speech_embeddings = self._extract_speech_embeddings(wav, wav_len)
             #TODO: get the prompts from input tensors
-            print("speech_embeddings", speech_embeddings.shape)
             input_ids = self._tokenize(num_speech_tokens=speech_embeddings.shape[1])
 
             if self.decoupled:
